@@ -27,14 +27,14 @@ jobs:
 
   unit-test:
     needs: [build]
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - name: Install dependencies 👨🏻‍💻
-          run: npm ci --prefer-offline --no-audit
-          
-        - name: Test run
-          run: npm run test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies 👨🏻‍💻
+        run: npm ci --prefer-offline --no-audit
+        
+      - name: Test run
+        run: npm run test
 
   # test-integration:
   #   needs: [test]
