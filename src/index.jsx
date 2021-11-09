@@ -2,11 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
-import TodoList from './TodoList'
+import AddTodo from './TodoList/components/AddTodo'
+import TodoList from './TodoList/components/TodoList'
+import { TodosContextProvider } from './TodoList/context/TodosContext'
 
 ReactDOM.render(
   <React.StrictMode>
-    <TodoList />
+    <TodosContextProvider>
+      <TodoList />
+      <AddTodo />
+    </TodosContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
