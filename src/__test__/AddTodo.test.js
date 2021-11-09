@@ -7,7 +7,7 @@ describe('Add todo item', () => {
     const component = render(
       <AddTodo />
     )
-    const addTodoButton = await component.findByText('Add todo')
+    const addTodoButton = await component.findByText('Add Todo')
     expect(addTodoButton).toBeDefined()
   })
 
@@ -24,7 +24,7 @@ describe('Add todo item', () => {
       </TodosContext.Provider>
     )
 
-    const addTodoButton = await component.findByText('Add todo')
+    const addTodoButton = await component.findByText('Add Todo')
     expect(todos.length).toEqual(0)
     fireEvent.click(addTodoButton)
     expect(handleAddTodo).toBeCalledTimes(1)

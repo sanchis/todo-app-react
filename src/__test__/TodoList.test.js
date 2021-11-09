@@ -5,11 +5,13 @@ import { TodosContext } from '../TodoList/context/TodosContext'
 describe('Test TodoList', () => {
   test('renders TodoList', () => {
     const todos = [{
+      id: '0',
       name: 'This is my new todo item',
       fav: false,
       checked: false,
       createdDate: new Date()
     }, {
+      id: '1',
       name: 'This is my new todo item 2',
       fav: false,
       checked: true,

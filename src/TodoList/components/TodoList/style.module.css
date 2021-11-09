@@ -2,3 +2,7 @@
 .todoList h1{
     text-align: center;
 }
+
+.todoList ul {
+    list-style: none;
+}

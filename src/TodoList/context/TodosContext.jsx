@@ -8,7 +8,11 @@ export function TodosContextProvider ({ children }) {
 
   useEffect(() => {
     localforage.getItem('todos')
-      .then(setTodos)
+      .then(todos => {
+        if (todos) {
+          setTodos(todos)
+        }
+      })
   }, [])
 
   useEffect(() => {
@@ -16,7 +20,18 @@ export function TodosContextProvider ({ children }) {
   }, [todos])
 
   function addTodo (todo) {
-    setTodos(todos => todos.push(todo))
+    setTodos(todos => [...todos, todo])
+  }
+
+  function updateTodo (todoUpdate) {
+    setTodos(todosInState =>
+      todosInState.map(todoMap => {
+        if (todoMap.id === todoUpdate.id) {
+          return todoUpdate
+        }
+        return todoMap
+      })
+    )
   }
 
   function deleteTodo (todo) {
@@ -28,7 +43,8 @@ export function TodosContextProvider ({ children }) {
       value={{
         todos,
         addTodo,
-        deleteTodo
+        deleteTodo,
+        updateTodo
       }}
     >
       {children}
