@@ -54,14 +54,24 @@ describe('Test TodoItem', () => {
       checked: false,
       createdDate: new Date()
     }
+    const expectedItem = {
+      ...item,
+      fav: true
+    }
     const handleClick = jest.fn()
-    const component = render(<TodoItem item={item} onFav={handleClick} />)
+    const component = render(
+      <TodosContext.Provider value={{
+        updateTodo: jest.fn()
+      }}
+      >
+        <TodoItem item={item} onChangeFav={handleClick} />
+      </TodosContext.Provider>
+    )
     const favButton = component.getByTestId('favButton')
 
-    expect(favButton.getAttribute('checked')).toEqual(item.fav)
     fireEvent.click(favButton)
     expect(handleClick).toHaveBeenCalledTimes(1)
-    expect(favButton.getAttribute('checked')).toEqual(true)
+    expect(handleClick).toBeCalledWith(expectedItem)
   })
 
   test('TodoItem should be deleted', () => {

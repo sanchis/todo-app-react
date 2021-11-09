@@ -16,8 +16,15 @@ export default function TodoItem ({
     updateTodo(itemToUpdate)
   }
 
+  function handleChangeFav () {
+    const itemToUpdate = { ...item }
+    itemToUpdate.fav = !item.fav
+    onChangeFav(itemToUpdate)
+    updateTodo(itemToUpdate)
+  }
+
   return (
-    <div>
+    <fieldset>
       <input
         type='checkbox'
         name='todoCheck'
@@ -25,7 +32,8 @@ export default function TodoItem ({
         data-testid='checkButton'
         onChange={handleChangeCheckBox}
       />
+      <button data-testid='favButton' onClick={handleChangeFav}>{item.fav ? '⭐️' : '✭'}</button>
       {JSON.stringify(item)}
-    </div>
+    </fieldset>
   )
 }
