@@ -84,7 +84,14 @@ describe('Test TodoItem', () => {
       createdDate: new Date()
     }
     const handleClick = jest.fn()
-    const component = render(<TodoItem item={item} onChangeDelete={handleClick} />)
+    const component = render(
+      <TodosContext.Provider value={{
+        deleteTodo: jest.fn()
+      }}
+      >
+        <TodoItem item={item} onDelete={handleClick} />
+      </TodosContext.Provider>
+    )
     const delButton = component.getByTestId('deleteButton')
 
     fireEvent.click(delButton)

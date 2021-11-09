@@ -7,7 +7,7 @@ export default function TodoItem ({
   onChangeFav = (e) => {},
   onDelete = (e) => {}
 }) {
-  const { updateTodo } = useContext(TodosContext)
+  const { updateTodo, deleteTodo } = useContext(TodosContext)
 
   function handleChangeCheckBox () {
     const itemToUpdate = { ...item }
@@ -23,6 +23,11 @@ export default function TodoItem ({
     updateTodo(itemToUpdate)
   }
 
+  function handleDelete () {
+    onDelete(item)
+    deleteTodo(item)
+  }
+
   return (
     <fieldset>
       <input
@@ -34,6 +39,7 @@ export default function TodoItem ({
       />
       <button data-testid='favButton' value={item.fav} onClick={handleChangeFav}>{item.fav ? '⭐️' : '✭'}</button>
       <span data-testid='name'>{item.name}</span>
+      <button data-testid='deleteButton' onClick={handleDelete}>🗑</button>
     </fieldset>
   )
 }

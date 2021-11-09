@@ -35,7 +35,7 @@ export function TodosContextProvider ({ children }) {
   }
 
   function deleteTodo (todo) {
-    setTodos(todos => todos.filter(todoFilter => todoFilter.name !== todo.name))
+    setTodos(todos => todos.filter(todoFilter => todoFilter.id !== todo.id))
   }
 
   return (
