@@ -1,9 +1,10 @@
 import { render } from '@testing-library/react'
-import TodoList from '../TodoList'
+import TodoList from '../TodoList/components/TodoList'
+import { TodosContext } from '../TodoList/context/TodosContext'
 
 describe('Test TodoList', () => {
   test('renders TodoList', () => {
-    const items = [{
+    const todos = [{
       name: 'This is my new todo item',
       fav: false,
       checked: false,
@@ -14,7 +15,14 @@ describe('Test TodoList', () => {
       checked: true,
       createdDate: new Date()
     }]
-    const component = render(<TodoList items={items} />)
+    const component = render(
+      <TodosContext.Provider value={{
+        todos
+      }}
+      >
+        <TodoList />
+      </TodosContext.Provider>
+    )
     expect(component.container.querySelectorAll('li').length).toEqual(2)
   })
 })
