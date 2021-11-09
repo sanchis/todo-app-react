@@ -12,9 +12,10 @@ describe('Test TodoItem', () => {
       createdDate: new Date()
     }
     const component = render(<TodoItem item={item} />)
-    expect(component.container).toHaveTextContent(item.name)
-    expect(component.queryByTestId('checkButton').getAttribute('checked')).toEqual(item.checked)
-    expect(component.queryByTestId('favButton').getAttribute('checked')).toEqual(item.fav)
+
+    expect(component.getByTestId('name').textContent).toEqual(item.name)
+    expect(component.getByTestId('checkButton').checked).toEqual(item.checked)
+    expect(component.getByTestId('favButton').value).toEqual(item.fav.toString())
   })
 
   test('TodoItem should be checked', () => {

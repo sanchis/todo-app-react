@@ -32,8 +32,8 @@ export default function TodoItem ({
         data-testid='checkButton'
         onChange={handleChangeCheckBox}
       />
-      <button data-testid='favButton' onClick={handleChangeFav}>{item.fav ? '⭐️' : '✭'}</button>
-      {JSON.stringify(item)}
+      <button data-testid='favButton' value={item.fav} onClick={handleChangeFav}>{item.fav ? '⭐️' : '✭'}</button>
+      <span data-testid='name'>{item.name}</span>
     </fieldset>
   )
 }
