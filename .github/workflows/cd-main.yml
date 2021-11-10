@@ -36,16 +36,16 @@ jobs:
       - name: Test run
         run: npm run test
 
-  # test-integration:
-  #   needs: [test]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Install dependencies 👨🏻‍💻
-  #       run: npm ci --prefer-offline --no-audit
-        
-  #     - name: Cypress run
-  #       uses: cypress-io/github-action@v2
-  #       with:
-  #         build: npm run build
-  #         start: npm run dev
+  test-integration:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies 👨🏻‍💻
+        run: npm ci --prefer-offline --no-audit
+       
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm run start
