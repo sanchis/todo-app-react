@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { TodosContext } from '../../context/TodosContext'
+import styles from './style.module.css'
 
 export default function TodoItem ({
   item,
@@ -28,8 +29,14 @@ export default function TodoItem ({
     deleteTodo(item)
   }
 
+  function handleStartEdit () {
+    const itemToUpdate = { ...item }
+    itemToUpdate.name = prompt('New title todo', item.name)
+    updateTodo(itemToUpdate)
+  }
+
   return (
-    <fieldset>
+    <fieldset className={styles.todoItemContainer}>
       <input
         type='checkbox'
         name='todoCheck'
@@ -38,7 +45,10 @@ export default function TodoItem ({
         onChange={handleChangeCheckBox}
       />
       <button data-testid='favButton' value={item.fav} onClick={handleChangeFav}>{item.fav ? '⭐️' : '✭'}</button>
-      <span data-testid='name'>{item.name}</span>
+      <span data-testid='name'>
+        {item.name}
+      </span>
+      <button onClick={handleStartEdit}>✎</button>
       <button data-testid='deleteButton' onClick={handleDelete}>🗑</button>
     </fieldset>
   )

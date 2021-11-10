@@ -5,4 +5,10 @@
 
 .todoList ul {
     list-style: none;
+    margin: 0px 10px;
+    padding: 0px;
+}
+
+.todoList ul li {
+    margin: 5px 0px;
 }

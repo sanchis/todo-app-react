@@ -1,0 +1,10 @@
+.todoItemContainer {
+    display: flex;
+    align-items: center;
+}
+
+.todoItemContainer span{
+    flex-grow: 1;
+    height: 20px;
+    padding: 0px 5px;
+}
