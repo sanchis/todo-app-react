@@ -37,7 +37,7 @@ jobs:
         run: npm run test
 
   test-integration:
-    needs: [test]
+    needs: [unit-test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
